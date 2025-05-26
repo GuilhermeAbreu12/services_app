@@ -1,5 +1,6 @@
 // main.dart
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -17,11 +18,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Choice your services',
       home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "agendei", 
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.green
+            ),
+          ),
+          
+          centerTitle: true,
+        ),
         body: Center(
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 70, vertical: 60),
+                margin: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
                   "Agende os seus serviços", 
                   style: TextStyle(
@@ -30,9 +42,27 @@ class MyApp extends StatelessWidget {
                   ),
                 )
               ),
-              
               Column(
                 children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 40),
+                    width: 400,
+                    child: TextField(
+                      style: TextStyle(
+                        color: Colors.white
+                      ), 
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.grey[200],
+                        labelText: 'Pesquisa',
+                        labelStyle: TextStyle(color: Colors.grey[600]),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none
+                        )
+                      ),
+                    ),
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -174,6 +204,7 @@ class MyApp extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.0),
                               color: const Color.fromARGB(209, 216, 211, 211)
                             ),
+                            child: Image.asset('yoga.png')
                           ),
                           Text("Serviço"),
                         ],
@@ -192,6 +223,7 @@ class MyApp extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.0),
                               color: const Color.fromARGB(209, 216, 211, 211)
                             ),
+                            child: Image.asset('yoga.png')
                           ),
                           Text("Serviço")
                         ],
@@ -210,6 +242,7 @@ class MyApp extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.0),
                               color: const Color.fromARGB(209, 216, 211, 211)
                             ),
+                            child: Image.asset('yoga.png')
                           ),
                           Text("Serviço")
                         ],
@@ -220,7 +253,31 @@ class MyApp extends StatelessWidget {
               )
             ],
           ),
-        )
+        ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0,
+        selectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.grey,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Colors.grey),
+            label: "Início"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search, color: Colors.grey),
+            label: "Pesquisa"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month, color: Colors.grey),
+            label: "Calendário"
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people, color: Colors.grey),
+            label: "Perfil do usuário"
+          )
+        ]
+      ),
       ),
     );
   }
